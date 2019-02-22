@@ -1,0 +1,79 @@
+.overview-container{
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .overview-row{
+        display: flex;
+    .overview-card{
+        background-color: white;
+        height: 350px;
+        width: 300px;
+        margin: 20px;
+        border-radius: 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: #717185;
+        justify-content: space-evenly;
+        box-shadow: 0px 0px 18px 3px #D7E9E7;
+        .class-ball{
+            background-image: linear-gradient(#9CECFB, #65C7F7);
+            height: 100px;
+            width: 100px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            .class{
+                color: white;
+                font-weight: 200;
+            }
+        }
+        .class-desc{
+            font-size: 1.2em;
+        }
+        .subject{
+            font-size: 1.1em;
+            color: #C7C7C7;
+        }
+        .stats{
+            display: flex;
+            font-size: 0.9em;
+            width: 100%;
+            color: #C7C7C7;
+            justify-content: space-evenly;
+            align-items: center;
+            margin-bottom: 20px;
+            .population{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                h2{
+                    font-size: 2em;
+                    margin: 0%;
+                    color: #1685FB;
+                    font-weight: 300;
+                }
+            }
+        }
+        .btn-container{
+            width: 100%;
+            display: flex;
+            justify-content: space-evenly;
+        button{
+            background-color: white;
+            border: none;
+            color: #A7A7C5;
+        }
+    }
+    }
+}
+h1{
+    font-weight: 400;
+    font-size : 2.8em;
+    color: #7882A2;
+}
+}
