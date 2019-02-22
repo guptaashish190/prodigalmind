@@ -1,9 +1,16 @@
+body{
+    margin: 0%;
+}
+
 .body-container{
     display: flex;
     flex-direction: column;
+    background-color: #F4F6F9;
+    width: 100%;
+    height: 89vh;
 }
 .header-container{
-    background: red;
-    height: 80px;
+    background: white;
+    height: 11vh;
     width: 100%;
 }
