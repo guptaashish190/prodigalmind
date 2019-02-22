@@ -181,26 +181,32 @@ def allCluster():
 def youtubRec():
     topList = open('data/topics.csv','r').readlines()
     topicDict = []
+    topicsList = []
     for a in topList:
         spl = a.split(',')
-        topicDict.append(spl[1])
+        topicDict.append(int(spl[2]))
+        topicsList.append(spl[1])
     d = {}
     c = 0
-    for a in initDa:
-        with open('data/testexam.csv','r') as f:
-            li = f.readlines()
-            for reading in range(len(li)):
-                temp = li[reading].split(',')[0]
-                
-        
-        d[topicDict[c]]=[cl1,cl2,cl3]
-        c+=1
-    json.dump(d,clus)
-    clus.close()
+    with open('data/testexam.csv','r') as f:
+        li = f.readlines()
+        for reading in range(len(li)):
+            temp = li[reading].split(',')
+            il = temp[0]
+            for b in range(len(temp)):
+                try:
+                    if(int(temp[b])<int(topicDict[b])):
+                        if(int(temp[b])<.50*int(topicDict[b]) and (int(temp[b])>.25*int(topicDict[b]))):
+                            d[il]=returnVideo(topicsList[b])
+                        else:
+                            d[il] = returnVideo('Basic concepts of '+ topicsList[b])
+                except:
+                    pass
+    with open('results/youtube.json','a+') as f:
+        f.dump(d)
 
         
-        
-
+    # print(topicDict)
         
 
 youtubRec()
