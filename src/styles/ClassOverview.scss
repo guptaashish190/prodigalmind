@@ -8,7 +8,7 @@
         display: flex;
     .overview-card{
         background-color: white;
-        height: 300px;
+        height: 320px;
         width: 280px;
         margin: 20px;
         border-radius: 15px;
@@ -16,6 +16,7 @@
         flex-direction: column;
         align-items: center;
         color: #717185;
+        justify-content: space-evenly;
         .class-ball{
             background-color: #9CECFB;
             height: 80px;
@@ -38,8 +39,18 @@
             color: #C7C7C7;
         }
         .stats{
-            
+
         }
+        .btn-container{
+            width: 100%;
+            display: flex;
+            justify-content: space-evenly;
+        button{
+            background-color: white;
+            border: none;
+            color: #A7A7C5;
+        }
+    }
     }
 }
 h1{

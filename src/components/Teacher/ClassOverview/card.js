@@ -12,6 +12,10 @@ class Card extends React.Component {
         <div className="stats">
             dcj
         </div>
+        <div className="btn-container">
+          <button>OPEN</button>
+          <button>BROADCAST A MESSAGE</button>
+        </div>
       </div>
     );
   }
