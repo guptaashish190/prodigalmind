@@ -4,6 +4,7 @@ import random
 import numpy as np
 import json
 import matplotlib.pyplot as plt
+from sklearn.cluster import KMeans
 
 def returnVideo(textToSearch):
     query = urllib.parse.quote(textToSearch)
@@ -50,7 +51,9 @@ def stats(classid):
     topList = open('data/topics.csv','r').readlines()
     finalJson = open('results/aggregate.json','ab+')
     finalCSV = open('results/aggregate.csv','a+')
+    indivCSV = open('results/indivcsv.csv','a+')
     topicDict = []
+    ids = []
     #topic list
     for a in topList:
         spl = a.split(',')
@@ -65,8 +68,9 @@ def stats(classid):
     for a in examRes:
         spl = a.split(',')
         # print([int(x.strip()) for x in spl[1::]])
+        ids.append(spl[0])
         finLis.append([int(x.strip()) for x in spl[1::]])
-    
+
     for a in finLis:
         tot= np.add(tot,a)
     # stats = [(x/(int(topicDict[1])*totalNo))*100 for x in tot]
@@ -82,29 +86,121 @@ def stats(classid):
         json.dump(finD,f)
     # totMarks = np.ndarray.tolist(totMarks)
     stats = [str(np.around(x,2)) for x in stats]
+
     finalCSV.write(','.join([classid]+stats)+'\n')
     finalCSV.close()
 
 
-stats('BCB003456')
+# stats('BCB003456')
+def lisToDict(arr):
+    d = {}
+    for a in arr:
+        # ne = a.split(',')
+        ne = a
+        nam = ne[0]
+        ne = [int(x) for x in ne[1::]]
+        d[nam]=ne
+    return d
 
 def aggregateStats():
     examRes = open('results/aggregate.csv','r').readlines()
     topList = open('data/topics.csv','r').readlines()
-    topicDict = {}
+    topicDict = []
     for a in topList:
         spl = a.split(',')
         tempd = []
-        topicDict[spl[1]]=[]
-    # print(topicDict)
+        topicDict.append([spl[1]])
+    for a in examRes:
+        te = a.split(',')[1::]
+        for b in range(len(te)):
+            topicDict[b].append(float(te[b]))
+    with open('results/aggregateOverTime.json','w') as f:
+        json.dump(lisToDict(topicDict),f)
+    return topicDict
 
+# aggregateStats()
 
-    
-    
+#cluster per subject
+def clusterPerSub(arr):
+    kmeans = KMeans(n_clusters=3, random_state=0).fit(np.asarray(arr).reshape(-1,1))
+    return kmeans.labels_
 
-aggregateStats()
-
-
-def youtubRec():
+def idsFromCluster():
     examRes = open('data/testexam.csv','r').readlines()
     topList = open('data/topics.csv','r').readlines()
+    topicDict = []
+    for a in topList:
+        spl = a.split(',')
+        tempd = []
+        topicDict.append([spl[1]])
+    for a in examRes:
+        regNo = a.split(',')[0]
+        te = a.split(',')[1::]
+        for b in range(len(te)):
+            topicDict[b].append(float(te[b]))
+    # print(topicDict)
+    return topicDict
+    
+
+#cluster for all subjects- increase collab
+def allCluster():
+    topList = open('data/topics.csv','r').readlines()
+    topicDict = []
+    for a in topList:
+        spl = a.split(',')
+        topicDict.append(spl[1])
+
+    initDa = idsFromCluster()
+    initDa = [x[1::] for x in initDa]
+    clus = open('results/cluster.json','w')
+    d = {}
+    c = 0
+    for a in initDa:
+        retuCl = clusterPerSub(a)
+        cl1,cl2,cl3=[],[],[]
+        with open('data/testexam.csv','r') as f:
+            li = f.readlines()
+            for reading in range(len(li)):
+                temp = li[reading].split(',')[0]
+                chk = retuCl[reading]
+                if chk==0:
+                    cl1.append(temp)
+                elif chk==1:
+                    cl2.append(temp)
+                else:
+                    cl3.append(temp)
+        
+        d[topicDict[c]]=[cl1,cl2,cl3]
+        c+=1
+    json.dump(d,clus)
+    clus.close()
+
+
+# allCluster()
+
+def youtubRec():
+    topList = open('data/topics.csv','r').readlines()
+    topicDict = []
+    for a in topList:
+        spl = a.split(',')
+        topicDict.append(spl[1])
+    d = {}
+    c = 0
+    for a in initDa:
+        with open('data/testexam.csv','r') as f:
+            li = f.readlines()
+            for reading in range(len(li)):
+                temp = li[reading].split(',')[0]
+                
+        
+        d[topicDict[c]]=[cl1,cl2,cl3]
+        c+=1
+    json.dump(d,clus)
+    clus.close()
+
+        
+        
+
+        
+
+youtubRec()
