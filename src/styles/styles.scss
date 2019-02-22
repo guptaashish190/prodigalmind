@@ -1,6 +1,9 @@
 body{
     margin: 0%;
+    font-family: Lato;
 }
+
+@import url('https://fonts.googleapis.com/css?family=Lato');
 
 .body-container{
     display: flex;
@@ -13,4 +16,32 @@ body{
     background: white;
     height: 11vh;
     width: 100%;
+    display: flex;
+    justify-content: space-between;
+    .logo-container{
+        display: flex;
+        h1{
+            font-weight: 400;
+        }
+        span{
+            color: #FC3E81;
+        }
+    }
+   .search-bar{
+       display: flex;
+    align-items: center;
+       input{
+           border: none;
+           width: 500px;
+           height: 40px;
+       }
+       input:focus{
+           outline: none;
+       }
+       img{
+           width: 15px;
+           margin-right: 5px;
+       }
+   }
+    
 }
