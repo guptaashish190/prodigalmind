@@ -15,6 +15,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        color: #717185;
         .class-ball{
             background-color: #9CECFB;
             height: 80px;
@@ -28,9 +29,16 @@
                 color: white;
                 font-weight: 200;
             }
-            .class-desc{
-                font-size: 1.9em;
-            }
+        }
+        .class-desc{
+            font-size: 1.2em;
+        }
+        .subject{
+            font-size: 1.1em;
+            color: #C7C7C7;
+        }
+        .stats{
+            
         }
     }
 }

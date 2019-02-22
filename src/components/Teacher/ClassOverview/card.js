@@ -9,6 +9,9 @@ class Card extends React.Component {
         </div>
         <span className="class-desc">Class 4 & Sec - C</span>
         <span className="subject">Maths</span>
+        <div className="stats">
+            dcj
+        </div>
       </div>
     );
   }
