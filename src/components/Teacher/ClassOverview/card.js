@@ -17,7 +17,8 @@ class Card extends React.Component {
                 Class Performance
           </div>
           <div className="population">
-                Number of Students
+            <h2>{this.props.details.pop}</h2>
+            <span>Number of Students</span>
           </div>
         </div>
         <div className="btn-container">

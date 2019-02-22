@@ -2,10 +2,10 @@ import React from 'react';
 import Card from './card';
 
 class Overview extends React.Component {
-    arr = [{ class: '9C', subject: 'Maths' }, { class: '11C', subject: 'Physics' },
-      { class: '7C', subject: 'Maths' }, { class: '12B', subject: 'Physics' },
-      { class: '8C', subject: 'Maths' }, { class: '10A', subject: 'Physics' },
-      { class: '10C', subject: 'Maths' }];
+    arr = [{ class: '9C', subject: 'Maths', pop: 60 }, { class: '11C', subject: 'Physics', pop: 50 },
+      { class: '7C', subject: 'Maths', pop: 55 }, { class: '12B', subject: 'Physics', pop: 65 },
+      { class: '8C', subject: 'Maths', pop: 50 }, { class: '10A', subject: 'Physics', pop: 50 },
+      { class: '10C', subject: 'Maths', pop: 65 }];
 
     render() {
       return (
