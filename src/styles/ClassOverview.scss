@@ -1,0 +1,42 @@
+.overview-container{
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .overview-row{
+        display: flex;
+    .overview-card{
+        background-color: white;
+        height: 300px;
+        width: 280px;
+        margin: 20px;
+        border-radius: 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .class-ball{
+            background-color: #9CECFB;
+            height: 80px;
+            width: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            .class{
+                color: white;
+                font-weight: 200;
+            }
+            .class-desc{
+                font-size: 1.9em;
+            }
+        }
+    }
+}
+h1{
+    font-weight: 400;
+    font-size : 2.8em;
+    color: #7882A2;
+}
+}
