@@ -1,2 +1,4 @@
 # ProdigalMind
-Prodigal Mind
+
+This is Prodigal Mind. Welcome. Learn.
+
