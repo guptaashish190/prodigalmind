@@ -3,8 +3,8 @@ import React from 'react';
 class Overview extends React.Component {
   render() {
     return (
-      <div>
-            Overview
+      <div className="overview-container">
+          Overview
       </div>
     );
   }

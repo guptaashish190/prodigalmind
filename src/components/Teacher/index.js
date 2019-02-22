@@ -1,13 +1,19 @@
 import React from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import Analysis from './ClassAnalysis/';
+import Overview from './ClassOverview/';
 
-class Teacher extends React.Component {
+class App extends React.Component {
   render() {
     return (
-      <div>
-            Teacher
-      </div>
+      <Router>
+        <div>
+          <Route path="/" component={Overview} />
+          <Route path="/class" component={Analysis} />
+        </div>
+      </Router>
     );
   }
 }
 
-export default Teacher;
+export default App;
