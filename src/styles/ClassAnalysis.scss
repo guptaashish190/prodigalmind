@@ -1,12 +1,87 @@
-.chart{
-    margin: 40px;
+@import './Constants.scss';
+
+.cards{
     display: flex;
     flex-direction: row;
-    width: 40%;
-    height: 500%; 
+    width: 100%;
+    .card-container{
+        border-radius: 10px;
+        margin: 10px;    
+        width: 20%;
+        height: 120px;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.253);
+        position: relative;
+        color: white;
+        .title{
+            font-family: $lato;
+            margin: 10px;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+        .content{
+            font-family: $lato;
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            font-weight: bold;
+            font-size: 2em;
+        }
+    }
+    .theme1{
+        background-image: linear-gradient(to right, #40BCF9,#1E87F0);
+    }
+    .theme2{
+        background-image: linear-gradient(to right, rgb(158, 255, 179),#1E87F0);
+    }
+    .theme3{
+        background-image: linear-gradient(to right, rgb(249, 206, 64),#1E87F0);
+    }
 }
-.card-container{
-    width: 200px;
-    height: 100px;
-    background: red;
+.charts-container{
+    margin: 20px;
+    width: 500px;
+    height: 300px;
+    padding: 20px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.204);
+    border-radius: 10px;
+    background: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    .chart{
+        margin: auto;
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        .title{
+            color: rgb(15, 15, 15);
+            z-index: 10;
+            position: absolute;
+        }
+    }
+    .bottom{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .main{
+        margin: auto;
+        height: 50%;
+        width: 90%;
+        .chartjs-render-monitor{
+            position: relative;
+            left: -40px;
+            top: -40px;
+            width: 500px !important;
+            height: 300px !important;
+        }
+    }
+    .small{
+        margin: 4px;
+        margin-left: 40px;
+        width: 10%;
+        color: rgb(68, 68, 68);
+        font-size: 0.7em;
+    }
+    
 }

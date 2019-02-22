@@ -1,9 +1,10 @@
 import React from 'react';
+import classnames from 'classnames';
 
 class Card extends React.Component {
   render() {
     return (
-      <div className="card-container">
+      <div className={classnames({ 'card-container': true, [this.props.theme]: true })}>
         <div className="title">
           {this.props.title}
         </div>

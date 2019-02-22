@@ -6,6 +6,8 @@ body{
 @import url('https://fonts.googleapis.com/css?family=Lato');
 
 .body-container{
+    position: fixed;
+    overflow-y: scroll;
     display: flex;
     flex-direction: column;
     background-color: #F4F6F9;
