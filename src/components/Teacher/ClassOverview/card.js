@@ -10,7 +10,12 @@ class Card extends React.Component {
         <span className="class-desc">Class 4 & Sec - C</span>
         <span className="subject">Maths</span>
         <div className="stats">
-            dcj
+          <div className="graph-overview">
+                Class Performance
+          </div>
+          <div className="population">
+                Number of Students
+          </div>
         </div>
         <div className="btn-container">
           <button>OPEN</button>

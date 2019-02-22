@@ -8,8 +8,8 @@
         display: flex;
     .overview-card{
         background-color: white;
-        height: 320px;
-        width: 280px;
+        height: 350px;
+        width: 300px;
         margin: 20px;
         border-radius: 15px;
         display: flex;
@@ -39,7 +39,11 @@
             color: #C7C7C7;
         }
         .stats{
-
+            display: flex;
+            font-size: 0.9em;
+            width: 100%;
+            color: #C7C7C7;
+            justify-content: space-evenly;
         }
         .btn-container{
             width: 100%;
