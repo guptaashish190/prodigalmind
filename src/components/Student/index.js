@@ -20,8 +20,8 @@ class Student extends React.Component {
           <div className="features-container">
             <ALOverview />
             <AQuizes />
-            <Timeline />
             <Chatroom />
+            <Timeline />
           </div>
         </div>
       </div>
