@@ -114,7 +114,7 @@ class Analysis extends React.Component {
             <Card theme="theme1" title="Class & Section" content="2A" />
             <Card theme="theme2" title="Average Marks" content="40.4" />
             <Card theme="theme3" title="Total Students" content="40" />
-            <Card theme="theme3" title="Total Students" content="40" />
+            <Card theme="theme4" title="Total Students" content="40" />
           </div>
           <div className="charts-container">
             <div className="chart main">
