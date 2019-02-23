@@ -16,10 +16,7 @@ module.exports = {
           ],
           backgroundColor: grd,
           borderColor: [
-            'rgba(75,192,192, 1)',
-            'rgba(1, 223, 111, 1)',
-            'rgba(75,192,192, 1)',
-            'rgba(1, 223, 111, 1)',
+            '#04A9F5',
           ],
         },
       ],
@@ -38,15 +35,13 @@ module.exports = {
       labels: ['', '', '', ''],
       datasets: [
         {
+          fill: false,
           data: [
             10, 7, 3, 9,
           ],
           backgroundColor: grd,
           borderColor: [
-            'rgba(75,192,192, 1)',
-            'rgba(1, 223, 111, 1)',
-            'rgba(75,192,192, 1)',
-            'rgba(1, 223, 111, 1)',
+            '#04A9F5',
           ],
         },
       ],
@@ -65,15 +60,13 @@ module.exports = {
       labels: ['', '', '', ''],
       datasets: [
         {
+          fill: false,
           data: [
             10, 7, 3, 9,
           ],
           backgroundColor: grd,
           borderColor: [
-            'rgba(75,192,192, 1)',
-            'rgba(1, 223, 111, 1)',
-            'rgba(75,192,192, 1)',
-            'rgba(1, 223, 111, 1)',
+            '#04A9F5',
           ],
         },
       ],

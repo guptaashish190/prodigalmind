@@ -46,12 +46,20 @@ class Card extends React.Component {
         },
         elements: {
           point: {
-            radius: 0,
+            radius: 3,
+            backgroundColor: '#04A9F5',
+            hoverRadius: 5,
+            hoverBorderWidth: 0,
+          },
+        },
+        layout: {
+          padding: {
+            top: 5,
+            right: 5,
           },
         },
         maintainAspectRatio: false,
       };
-
       return (
         <div className="overview-card">
           <div className="class-ball">
@@ -74,7 +82,7 @@ class Card extends React.Component {
             </div>
             <div className="population">
               <h2>{this.props.details.pop}</h2>
-              <span>Number of Students</span>
+              <span>No. of Students</span>
             </div>
           </div>
           <div className="btn-container">

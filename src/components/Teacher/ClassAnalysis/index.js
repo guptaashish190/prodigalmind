@@ -17,7 +17,7 @@ class Analysis extends React.Component {
       name: 'Marcus', num: '+91 94140 19120', att: '83', color: '#FF0D3F',
     },
     {
-      name: 'Sam Wilson', num: '+91 94140 13420', att: '67', color: '#0D9EFF',
+      name: 'Sheldon', num: '+91 94140 13420', att: '67', color: '#0D9EFF',
     },
     {
       name: 'Rachel', num: '+91 923140 12120', att: '95', color: '#FF0D3F',
@@ -37,34 +37,73 @@ class Analysis extends React.Component {
         legend: {
           display: false,
         },
-        scales: {
-          yAxes: [{
-            ticks: {
-              max: 10,
-              min: 0,
-              stepSize: 2,
-            },
-          }],
-        },
         line: {
           borderColor: 'red',
         },
+        scales: {
+          xAxes: [{
+            gridLines: {
+              display: false,
+              drawBorder: false,
+            },
+          }],
+          yAxes: [{
+            gridLines: {
+            },
+            ticks: {
+              beginAtZero: true,
+              display: false,
+            },
+          }],
+        },
+        elements: {
+          point: {
+            radius: 3,
+            backgroundColor: '#04A9F5',
+            hoverRadius: 5,
+            hoverBorderWidth: 0,
+          },
+        },
+        layout: {
+          padding: {
+            top: 5,
+            right: 5,
+          },
+        },
+        maintainAspectRatio: false,
       };
       const optionssmall = {
         legend: {
           display: false,
         },
-        scales: {
-          yAxes: [{
-            display: false,
-          }],
-          xAxes: [{
-            display: false,
-          }],
-        },
         line: {
           borderColor: 'red',
         },
+        scales: {
+          xAxes: [{
+
+          }],
+          yAxes: [{
+            gridLines: {
+            },
+
+          }],
+        },
+        elements: {
+          point: {
+            radius: 3,
+            backgroundColor: '#04A9F5',
+            hoverRadius: 5,
+            hoverBorderWidth: 0,
+          },
+        },
+        layout: {
+          padding: {
+            top: 5,
+            right: 5,
+          },
+        },
+        maintainAspectRatio: false,
       };
 
 
@@ -79,21 +118,17 @@ class Analysis extends React.Component {
           </div>
           <div className="charts-container">
             <div className="chart main">
-              <span className="title">Student Perfomance Index<br /> Time: 14/2/19</span>
-              <Line data={chart1Data} options={options} />
+              <Line data={chart1Data} width={600} height={400} options={options} />
             </div>
             <div className="bottom">
               <div className="chart small">
-                <span className="title">topic1</span>
-                <Line data={chart2Data} options={optionssmall} />
+                <Line data={chart2Data} options={optionssmall} width={140} height={100} />
               </div>
               <div className="chart small">
-                <span className="title">topic2</span>
-                <Line data={chart2Data} options={optionssmall} />
+                <Line data={chart2Data} options={optionssmall} width={140} height={100} />
               </div>
               <div className="chart small">
-                <span className="title">topic3</span>
-                <Line data={chart3Data} options={optionssmall} />
+                <Line data={chart3Data} options={optionssmall} width={140} height={100} />
               </div>
             </div>
 
@@ -116,6 +151,8 @@ class Analysis extends React.Component {
           </div>
           <div className="student-info">
             <Studentcard details={this.studentdata[0]} />
+            <Studentcard details={this.studentdata[1]} />
+            <Studentcard details={this.studentdata[2]} />
             <Studentcard details={this.studentdata[1]} />
             <Studentcard details={this.studentdata[2]} />
             <Studentcard details={this.studentdata[3]} />

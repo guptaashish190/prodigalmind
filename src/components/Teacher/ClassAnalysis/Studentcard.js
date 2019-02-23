@@ -45,7 +45,16 @@ class Studentcard extends React.Component {
         },
         elements: {
           point: {
-            radius: 0,
+            radius: 3,
+            backgroundColor: this.props.details.color,
+            hoverRadius: 5,
+            hoverBorderWidth: 0,
+          },
+        },
+        layout: {
+          padding: {
+            top: 5,
+            right: 5,
           },
         },
         maintainAspectRatio: false,

@@ -194,22 +194,10 @@
         flex-direction: row;
     }
 
-    .main{
-        margin: auto;
-        height: 50%;
-        width: 90%;
-        .chartjs-render-monitor{
-            position: relative;
-            left: -40px;
-            top: -40px;
-            width: 500px !important;
-            height: 300px !important;
-        }
-    }
+    
     .small{
         margin: 4px;
         margin-left: 40px;
-        width: 10%;
         color: rgb(68, 68, 68);
         font-size: 0.7em;
     }
