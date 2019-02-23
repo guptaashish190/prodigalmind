@@ -11,7 +11,7 @@ class Studentcard extends React.Component {
             0, 6, 4, 10,
           ],
           borderColor: [
-            '#04A9F5',
+            this.props.details.color,
           ],
         },
       ],
@@ -55,11 +55,11 @@ class Studentcard extends React.Component {
           <div className="name-data">
             <h2>1.</h2>
             <img src="/images/1.png" alt="profile-pic" />
-            <h2>Marcus</h2>
+            <h2>{this.props.details.name}</h2>
           </div>
           <div className="phone-details">
             <img src="/images/phone.svg" alt="phone" />
-            <h2>+91 94140 19120</h2>
+            <h2>{this.props.details.num}</h2>
           </div>
           <div className="student-graph">
             <Line
@@ -70,7 +70,7 @@ class Studentcard extends React.Component {
             />
           </div>
           <div className="attendance-details">
-            <h2>74%</h2>
+            <h2>{this.props.details.att}</h2>
             <span>Attendance</span>
           </div>
           <button>View More</button>

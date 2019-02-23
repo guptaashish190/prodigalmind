@@ -10,7 +10,21 @@ class Analysis extends React.Component {
       addPaperPopup: false,
     }
 
+
     getTitles = () => this.title.map(elem => <li>{elem}</li>)
+
+    studentdata = [{
+      name: 'Marcus', num: '+91 94140 19120', att: '83', color: '#FF0D3F',
+    },
+    {
+      name: 'Sam Wilson', num: '+91 94140 13420', att: '67', color: '#0D9EFF',
+    },
+    {
+      name: 'Rachel', num: '+91 923140 12120', att: '95', color: '#FF0D3F',
+    },
+    {
+      name: 'Marcus', num: '+91 94671 12999', att: '82', color: '#0D9EFF',
+    }];
 
     title = ['Electrostatic Quiz', 'Electrostatic Potential', 'Gravitation'];
 
@@ -101,9 +115,10 @@ class Analysis extends React.Component {
             </div>
           </div>
           <div className="student-info">
-            <Studentcard />
-            <Studentcard />
-            <Studentcard />
+            <Studentcard details={this.studentdata[0]} />
+            <Studentcard details={this.studentdata[1]} />
+            <Studentcard details={this.studentdata[2]} />
+            <Studentcard details={this.studentdata[3]} />
           </div>
         </div>
       );
