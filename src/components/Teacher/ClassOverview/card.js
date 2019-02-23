@@ -11,6 +11,29 @@ class Card extends React.Component {
       line: {
         borderColor: 'red',
       },
+      scales: {
+        xAxes: [{
+          gridLines: {
+            display: false,
+            drawBorder: false,
+          },
+        }],
+        yAxes: [{
+          gridLines: {
+            display: false,
+            drawBorder: false,
+          },
+          ticks: {
+            beginAtZero: true,
+            display: false,
+          },
+        }],
+      },
+      elements: {
+        point: {
+          radius: 0,
+        },
+      },
     };
 
     return (
