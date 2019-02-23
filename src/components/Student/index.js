@@ -1,6 +1,7 @@
 import React from 'react';
 import ALOverview from './ALOverview';
 import Sidebar from './Sidebar';
+import AQuizes from './AQuizes';
 
 class Student extends React.Component {
   // Assumptions
@@ -15,6 +16,7 @@ class Student extends React.Component {
               Good Afternoon, {this.name.split(' ')[0]}
           </div>
           <ALOverview />
+          <AQuizes />
         </div>
       </div>
     );
