@@ -1,11 +1,11 @@
 const PaperModel = require('../schemas/paper');
 module.exports = function(app,db){
+
   app.get('/getPaper',(req,res)=>{
     let row = {};
     row.papers_array = [{}];
     PaperModel.find({}).then(papers=>{
-      //res.send(papers);
-      papers.forEach((paper,i,array)=>{
+        papers.forEach((paper,i,array)=>{
         row.papers_array[i] = {};
         row.papers_array[i].subject = paper.paper_subject;
         row.papers_array[i].topics = paper.paper_topics;

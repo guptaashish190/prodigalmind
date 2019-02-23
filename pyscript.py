@@ -37,5 +37,5 @@ for i in range(10):
         })
     payload["student"] = data
     print(json.dumps(payload))
-    # requests.post("http://192.168.43.158:8000/uploadPaper",data = json.loads())
-# resposnse = request.post()
+    #requests.post("http://192.168.43.158:8000/uploadPaper",data = json.loads(json.dumps))
+ resposnse = request.post()

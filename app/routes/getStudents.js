@@ -7,15 +7,14 @@ module.exports = function(app,db){
       var id = req.query.id;
       StudentModel.find({id}).then(stds=>{
         var list = stds[];
-        request.post(url,json=true,},(err, ures, ubody)=>{
-          ClassModel.findOneAndUpdate({
+        request.post(url,},(err, ures, ubody)=>{
+          StudentModel.findOneAndUpdate({
             id,
           },{$set:{class_performance:ubody.p}})
           .then((r)=>{
             res.send(r);
           })
           .catch(err=>{
-
           });
       })
     })
