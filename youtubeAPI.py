@@ -14,9 +14,10 @@ def returnVideo(textToSearch):
     soup = BeautifulSoup(html, 'html.parser')
     lisOfVideo = []
     for vid in soup.findAll(attrs={'class':'yt-uix-tile-link'}):
-        if(len(lisOfVideo)<4):
+        if(len(lisOfVideo)<3):
             lisOfVideo.append('https://www.youtube.com' + vid['href'])
-    return lisOfVideo
+    
+    return ['https://www.youtube.com' + vid['href'],random.shuffle(lisOfVideo)[0]]
 
 # marking per exam per student
 def markingPerExam(topicWiseMarks):
@@ -43,7 +44,7 @@ def dataentry():
         f.write(','.join(dat)+'\n')
         f.flush()
     f.close()
-dataentry()
+# dataentry()
 
 #class stats for every class id
 def stats(classid):
@@ -196,17 +197,19 @@ def youtubRec():
             for b in range(len(temp)):
                 try:
                     if(int(temp[b])<int(topicDict[b])):
-                        if(int(temp[b])<.50*int(topicDict[b]) and (int(temp[b])>.25*int(topicDict[b]))):
-                            d[il]=returnVideo(topicsList[b])
+                        if(int(temp[b])<.75*int(topicDict[b]) and (int(temp[b])>5.*int(topicDict[b]))):
+                            d[il]=returnVideo(topicsList[b])[1]
                         else:
-                            d[il] = returnVideo('Basic concepts of '+ topicsList[b])
+                            d[il] = returnVideo('Basic concepts of '+ topicsList[b])[1]
                 except:
                     pass
+            print('Done for {}'.format(il))
     with open('results/youtube.json','a+') as f:
-        f.dump(d)
+        json.dump(d,f)
 
         
     # print(topicDict)
         
 
-youtubRec()
+# aggregateStats()
+allCluster()
