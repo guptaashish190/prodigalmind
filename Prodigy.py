@@ -8,7 +8,7 @@ from sklearn.cluster import KMeans
 import requests
 
 def processInitialData():
-    resu = open('data/results.json','r')
+    resu = open('data/testexam.json','r')
     pap = open('data/paper.json','r')
     resucs = open('data/testexam.csv','w+')
     papcs = open('data/topics.csv','w+')
