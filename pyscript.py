@@ -19,10 +19,10 @@ subject_list = ["Physics","History","Geography"]
 
 
 for i in range(10):
-    print(i)
+    ##print(i)
     payload ={}
     choice = random.choice(subject_list)
-    print(choice)
+    #print(choice)
     payload["paper_id"] = random.randint(0, 5)
     payload["paper_subject"] = choice
     payload["paper_topics"] = list[choice]
@@ -37,5 +37,5 @@ for i in range(10):
         })
     payload["student"] = data
     print(json.dumps(payload))
-    #requests.post("http://192.168.43.158:8000/uploadPaper",data = json.loads(json.dumps))
- resposnse = request.post()
+    requests.post("https://prodigalmind.herokuapp.com/uploadPaper",data = json.loads(json.dumps(payload)))
+ #resposnse = request.post()

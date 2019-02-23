@@ -22,9 +22,12 @@ module.exports = function(app,db){
     let row = [];
 
     PaperModel.find({}).then((papers)=>{
+        console.log(papers)
         papers.forEach((paper,i)=>{
-        row[i] = paper.student;
-      });
+        //console.log(paper);
+
+        //row[i] = paper.student;
+    });
         res.send(row)
     })
 
