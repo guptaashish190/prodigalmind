@@ -49,6 +49,7 @@ class Card extends React.Component {
             radius: 0,
           },
         },
+        maintainAspectRatio: false,
       };
 
       return (

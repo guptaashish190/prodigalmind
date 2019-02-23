@@ -3,6 +3,7 @@ import { Line } from 'react-chartjs-2';
 import Card from './Card';
 import { chart1Data, chart2Data, chart3Data } from './chartdata';
 import AddPaper from './AddPaper';
+import Studentcard from './Studentcard';
 
 class Analysis extends React.Component {
     state = {
@@ -98,6 +99,11 @@ class Analysis extends React.Component {
             <div className="detail-card">
               <button onClick={() => this.setState({ addPaperPopup: true })} >Upload Student Marks</button>
             </div>
+          </div>
+          <div className="student-info">
+            <Studentcard />
+            <Studentcard />
+            <Studentcard />
           </div>
         </div>
       );
