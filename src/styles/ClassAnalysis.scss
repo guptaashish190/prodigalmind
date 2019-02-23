@@ -138,7 +138,7 @@
         border-radius: 10px;
         margin: auto;
         width: 23%;
-        height: 120px;
+        height: 180px;
         box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.253);
         position: relative;
         color: white;
@@ -148,6 +148,7 @@
             position: absolute;
             top: 10px;
             left: 10px;
+            font-size: 1.6em;
         }
         .content{
             font-family: $lato;
@@ -159,13 +160,20 @@
         }
     }
     .theme1{
-        background-image: linear-gradient(to right, #40BCF9,#1E87F0);
+        background-image: url('/images/first_card_background.png');
+        background-size: 100% 180px;
     }
     .theme2{
-        background-image: linear-gradient(to right, rgb(158, 255, 179),#1E87F0);
+        background-image: url('/images/second_card_background.png');
+        background-size: 100% 180px;
     }
     .theme3{
-        background-image: linear-gradient(to right, rgb(249, 206, 64),#1E87F0);
+        background-image: url('/images/third_card_background.png');
+        background-size: 100% 180px;
+    }
+    .theme4{
+        background-image: url('/images/fourth_card_background.png');
+        background-size: 100% 180px;
     }
 }
 .charts-container{
