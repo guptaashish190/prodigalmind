@@ -137,7 +137,32 @@ class Analysis extends React.Component {
 
             </div>
             <div className="detail-card">
-        Cards
+              <h1>Create Personalised Papers</h1>
+              <div className="quiz-card">
+                <span>Electrostatic Test</span>
+                <button>Publish</button>
+              </div>
+              <div className="quiz-card">
+                <span>Alexandra Quiz</span>
+                <button>Publish</button>
+              </div>
+              <div className="quiz-card">
+                <span>NLM Assessment</span>
+                <button>Publish</button>
+              </div>
+              <h1>Earlier Paper Insights</h1>
+              <div className="quiz-card">
+                <span>Electrostatic Test</span>
+                <button>Publish</button>
+              </div>
+              <div className="quiz-card">
+                <span>Alexandra Quiz</span>
+                <button>Publish</button>
+              </div>
+              <div className="quiz-card">
+                <span>NLM Assessment</span>
+                <button>Publish</button>
+              </div>
             </div>
             <div className="cards-2">
               <div className="detail-card">
@@ -149,7 +174,7 @@ class Analysis extends React.Component {
                 </ul>
               </div>
               <div className="detail-card">
-                <button onClick={() => this.setState({ addPaperPopup: true })} >Upload Student Marks</button>
+                <button onClick={() => this.setState({ addPaperPopup: true })} className="btn-upload">Upload Student Marks</button>
               </div>
             </div>
             <div className="student-info">
