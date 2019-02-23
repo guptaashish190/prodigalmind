@@ -18,6 +18,9 @@
         color: #717185;
         justify-content: space-evenly;
         box-shadow: 0px 0px 18px 3px #D7E9E7;
+        button{
+            cursor: pointer;
+        }
         .class-ball{
             background-image: linear-gradient(#9CECFB, #65C7F7);
             height: 100px;
@@ -51,8 +54,11 @@
                 display: flex;
                 flex-direction: column;
                 align-items: center;
+                height: 100px;
+                margin-top: 30px;
+                justify-content: space-around;
                 h2{
-                    font-size: 2em;
+                    font-size: 2.4em;
                     margin: 0%;
                     color: #1685FB;
                     font-weight: 300;
@@ -87,4 +93,13 @@ h1{
     font-size : 2.8em;
     color: #7882A2;
 }
+}
+
+@keyframes fadein{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
 }
