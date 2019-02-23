@@ -1,0 +1,43 @@
+.greeting{
+    color: #FF0044;
+    padding: 20px;
+    font-size: 1.5em;
+}
+.student-section-container {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 44px 15fr;
+    .sidebar-container{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: white;
+        div{
+            margin: 10px;
+        }
+    }
+}
+
+.aloverview-container{
+    padding: 0 40px;
+    .title{
+        color: #1685FB;
+        font-size: 1.3em;
+    }
+    ul{
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+        li{
+            margin: 10px;
+            width: 200px;
+            height: 200px;
+            border-radius: 16px;
+            img{
+                width: 200px;
+                height: 200px;
+            }
+        }
+    }
+}
