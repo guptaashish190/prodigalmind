@@ -3,8 +3,7 @@ var Schema = mongoose.Schema;
 var paperSchema = new Schema({
    student_id: Number,
    student_name: String,
-   class_id:Number,
-   student_performance: [],
+   class_id:String,
    student_marks: [Object]
-}, {collection: 'devsoc'});
-module.exports = mongoose.model('Paper', paperSchema)
+}, {collection: 'Student'});
+module.exports = mongoose.model(  'Paper', paperSchema)

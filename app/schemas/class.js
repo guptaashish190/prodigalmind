@@ -1,9 +1,8 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-var paperSchema = new Schema({
-   class_id:Number,
+var classSchema = new Schema({
    class_sec:String,
-   class_performance: [],
-   class_teacher_id:String
-}, {collection: 'devsoc'});
-module.exports = mongoose.model('Paper', paperSchema)
+   class_teacher_id:String,
+   class_performance:Number
+}, {collection: 'Class'});
+module.exports = mongoose.model('Classs', classSchema)
