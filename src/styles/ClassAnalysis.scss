@@ -1,5 +1,9 @@
 @import './Constants.scss';
 
+.main-analysis{
+    display: grid;
+    grid-column: 1fr 18fr;
+}
 .analysis-container{
     padding-bottom: 100px;
     display: grid;

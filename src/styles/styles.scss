@@ -8,7 +8,10 @@ body{
 
 
 .body-container{
+    position: fixed;
+    overflow-y:scroll;
     display: flex;
+    width: 100%;
     flex-direction: column;
     background-color: #F4F6F9;
 }
@@ -19,12 +22,13 @@ body{
     display: flex;
     align-items: center;
     z-index: 10;
+    box-shadow: 10px 0px 10px rgba(0, 110, 255, 0.295);
     .logo-container{
         display: flex;
         margin-left: 20px;
         img{
             margin-right: 10px;
-            transform: scale(0.9,0.9);
+            width: 30px;
         }
         h2{
             font-size: 1.7em;

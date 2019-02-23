@@ -14,38 +14,6 @@ class AddPaper extends React.Component {
       maxMarks: 10,
     }
 
-
-    studentNames = ['Ashish', 'Lavan', 'Arpit']
-
-    setFieldState = (stud, i, e) => {
-      const { studMarks } = this.state;
-      if (!studMarks[stud]) {
-        studMarks[stud] = [];
-      }
-      studMarks[stud][i] = e.target.value;
-      this.setState({ studMarks });
-    }
-    getFields = (student) => {
-      let fields = [];
-      for (let i = 0; i < this.state.numberques; i += 1) {
-        fields.push(<input placeholder={`Q${i + 1}`} type="text" value={this.state.studMarks[student] ? this.state.studMarks[student][i] : ''} onChange={e => this.setFieldState(student, i, e)} />);
-      }
-      return fields;
-    }
-
-    mapStudentsFields = () => {
-      let list = [];
-      return this.studentNames.map(stud => (
-        <li>
-          <div className="name">{stud}</div>
-          <div className="fields">
-            {this.getFields(stud)}
-          </div>
-        </li>
-
-      ));
-    }
-
     onSubmit = () => {
       const studentMarks = Object.keys(this.state.studMarks).map(id => ({ roll: shortid.generate(), marks: this.state.studMarks[id] }));
       const marksList = [];
@@ -62,7 +30,25 @@ class AddPaper extends React.Component {
       console.log(data);
       Axios.post(`${server}/uploadPaper`, data).then((res) => {
         console.log(res);
+        this.props.close();
       });
+    }
+
+
+    getFields = (student) => {
+      let fields = [];
+      for (let i = 0; i < this.state.numberques; i += 1) {
+        fields.push(<input placeholder={`Q${i + 1}`} type="text" value={this.state.studMarks[student] ? this.state.studMarks[student][i] : ''} onChange={e => this.setFieldState(student, i, e)} />);
+      }
+      return fields;
+    }
+    setFieldState = (stud, i, e) => {
+      const { studMarks } = this.state;
+      if (!studMarks[stud]) {
+        studMarks[stud] = [];
+      }
+      studMarks[stud][i] = e.target.value;
+      this.setState({ studMarks });
     }
     setStateQuestions = (e, i) => {
       const { questions } = this.state;
@@ -74,14 +60,16 @@ class AddPaper extends React.Component {
     getQuestionMaps = () => {
       let list = [];
       for (let i = 0; i < this.state.numberques; i += 1) {
-        list.push(<li className="questions-card">
-          {i + 1}
-          <select defaultValue={this.state.questions[i]} onChange={e => this.setStateQuestions(e, i)}>
-            <option > Gravitation</option>
-            <option> NLG</option>
-            <option> Electrostats</option>
-          </select>
-                  </li>);
+        list.push((
+          <li className="questions-card">
+            {i + 1}
+            <select defaultValue={this.state.questions[i]} onChange={e => this.setStateQuestions(e, i)}>
+              <option > Gravitation</option>
+              <option> NLG</option>
+              <option> Electrostats</option>
+            </select>
+          </li>
+        ));
       }
       return list;
     }
@@ -105,6 +93,16 @@ class AddPaper extends React.Component {
       </div>
     )
 
+    mapStudentsFields = () => this.studentNames.map(stud => (
+      <li>
+        <div className="name">{stud}</div>
+        <div className="fields">
+          {this.getFields(stud)}
+        </div>
+      </li>
+
+    ))
+    studentNames = ['Ashish', 'Lavan', 'Arpit']
     subjects = ['Physics', 'Chemistry', 'Biology'];
 
     initQuestions = (e) => {

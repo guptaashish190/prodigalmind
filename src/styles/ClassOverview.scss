@@ -1,10 +1,14 @@
 .overview-container{
     width:100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    width: 100%;
+    height: 90%;
+    overflow-y: scroll;
+    position: fixed;
+    text-align: center;
        .overview-row{
+           margin: 0 auto;
         display: flex;
     .overview-card{
         background-color: white;

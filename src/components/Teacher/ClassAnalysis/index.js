@@ -4,7 +4,7 @@ import Card from './Card';
 import { chart1Data, chart2Data, chart3Data } from './chartdata';
 import AddPaper from './AddPaper';
 import Studentcard from './Studentcard';
-import Sidebar from '../../Sidebar';
+import Sidebar from '../../Student/Sidebar';
 
 class Analysis extends React.Component {
     state = {
@@ -109,54 +109,57 @@ class Analysis extends React.Component {
 
 
       return (
-        <div className="analysis-container">
-          {this.state.addPaperPopup ? <AddPaper close={this.closeAddQuestionPaper} /> : '' }
-          <div className="cards">
-            <Card theme="theme1" title="Class & Section" content="2A" />
-            <Card theme="theme2" title="Average Marks" content="40.4" />
-            <Card theme="theme3" title="Total Students" content="40" />
-            <Card theme="theme4" title="Total Students" content="40" />
-          </div>
-          <div className="charts-container">
-            <div className="chart main">
-              <Line data={chart1Data} width={600} height={400} options={options} />
+        <div className="main-analysis">
+          <Sidebar />
+          <div className="analysis-container">
+            {this.state.addPaperPopup ? <AddPaper close={this.closeAddQuestionPaper} /> : '' }
+            <div className="cards">
+              <Card theme="theme1" title="Class & Section" content="2A" />
+              <Card theme="theme2" title="Average Marks" content="40.4" />
+              <Card theme="theme3" title="Total Students" content="40" />
+              <Card theme="theme4" title="Total Students" content="40" />
             </div>
-            <div className="bottom">
-              <div className="chart small">
-                <Line data={chart2Data} options={optionssmall} width={140} height={100} />
+            <div className="charts-container">
+              <div className="chart main">
+                <Line data={chart1Data} width={600} height={400} options={options} />
               </div>
-              <div className="chart small">
-                <Line data={chart2Data} options={optionssmall} width={140} height={100} />
+              <div className="bottom">
+                <div className="chart small">
+                  <Line data={chart2Data} options={optionssmall} width={140} height={100} />
+                </div>
+                <div className="chart small">
+                  <Line data={chart2Data} options={optionssmall} width={140} height={100} />
+                </div>
+                <div className="chart small">
+                  <Line data={chart3Data} options={optionssmall} width={140} height={100} />
+                </div>
               </div>
-              <div className="chart small">
-                <Line data={chart3Data} options={optionssmall} width={140} height={100} />
-              </div>
-            </div>
 
-          </div>
-          <div className="detail-card">
+            </div>
+            <div className="detail-card">
         Cards
-          </div>
-          <div className="cards-2">
-            <div className="detail-card">
-              <span className="title">
+            </div>
+            <div className="cards-2">
+              <div className="detail-card">
+                <span className="title">
                 Timeline
-              </span>
-              <ul className="topics">
-                {this.getTitles()}
-              </ul>
+                </span>
+                <ul className="topics">
+                  {this.getTitles()}
+                </ul>
+              </div>
+              <div className="detail-card">
+                <button onClick={() => this.setState({ addPaperPopup: true })} >Upload Student Marks</button>
+              </div>
             </div>
-            <div className="detail-card">
-              <button onClick={() => this.setState({ addPaperPopup: true })} >Upload Student Marks</button>
+            <div className="student-info">
+              <Studentcard details={this.studentdata[0]} />
+              <Studentcard details={this.studentdata[1]} />
+              <Studentcard details={this.studentdata[2]} />
+              <Studentcard details={this.studentdata[1]} />
+              <Studentcard details={this.studentdata[2]} />
+              <Studentcard details={this.studentdata[3]} />
             </div>
-          </div>
-          <div className="student-info">
-            <Studentcard details={this.studentdata[0]} />
-            <Studentcard details={this.studentdata[1]} />
-            <Studentcard details={this.studentdata[2]} />
-            <Studentcard details={this.studentdata[1]} />
-            <Studentcard details={this.studentdata[2]} />
-            <Studentcard details={this.studentdata[3]} />
           </div>
         </div>
       );
