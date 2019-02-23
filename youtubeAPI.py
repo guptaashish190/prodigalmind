@@ -5,6 +5,61 @@ import numpy as np
 import json
 import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
+import requests
+
+def getResultsData():
+    url = "http://192.168.43.158:8000/getResults"
+    response_json = requests.get(url).json()
+    # response_json = response_json.decode('utf-8')
+    dataform = str(response_json).strip("'<>() ").replace('\'', '\"')
+    response = json.loads(dataform)
+    f = open('data/results.json','w+')
+    json.dump(response,f)
+
+    url = "http://192.168.43.158:8000/getPaper"
+    response_json = requests.get(url).json()
+    # response_json = response_json.decode('utf-8')
+    dataform = str(response_json).strip("'<>() ").replace('\'', '\"')
+    response = json.loads(dataform)
+    f = open('data/paper.json','w+')
+    json.dump(response,f)
+
+
+
+def processInitialData():
+    resu = open('data/results.json','r')
+    pap = open('data/paper.json','r')
+    resucs = open('data/testexam.csv','w+')
+    papcs = open('data/topics.csv','w+')
+    jr = json.load(resu)
+    jp = json.load(pap)
+    # print(jp['papers_array'])
+    s = ''
+    for a in jp['papers_array']:
+        temp = []
+        for b in range(len(a['topics'])):
+            s+=a['subject']+','
+            s+=a['topics'][b]+','
+            s+=str(a['marks'][b])+','
+            s = s[:-1]
+            s+='\n'
+            papcs.write(s)
+            s=''
+
+    pap.close()
+
+    for a in jr:
+        for b in a:
+            s+=str(b['roll'])+','
+            for c in b['marks']:
+                s+=str(c)+','
+        s=s[:-1]
+        s+='\n'
+        resucs.write(s)
+        s=''
+    resu.close()
+# processInitialData()
+
 
 def returnVideo(textToSearch):
     query = urllib.parse.quote(textToSearch)
@@ -76,8 +131,10 @@ def stats(classid):
         tot= np.add(tot,a)
     # stats = [(x/(int(topicDict[1])*totalNo))*100 for x in tot]
     totMarks = [int(x[1].strip())*totalNo for x in topicDict]
+    # print(totMarks)
     # percentage marks per sections
-    stats = np.divide(tot,np.asarray(totMarks))*100
+    stats = np.divide(np.asarray(totMarks),tot)*100
+    # print(stats)
     d = {}
     # regList = [x.split(',')[0].strip() for x in examRes]
     for a in range(len(stats)):
@@ -92,7 +149,6 @@ def stats(classid):
     finalCSV.close()
 
 
-# stats('BCB003456')
 def lisToDict(arr):
     d = {}
     for a in arr:
@@ -104,6 +160,7 @@ def lisToDict(arr):
     return d
 
 def aggregateStats():
+    stats('1B9C100')
     examRes = open('results/aggregate.csv','r').readlines()
     topList = open('data/topics.csv','r').readlines()
     topicDict = []
@@ -119,7 +176,6 @@ def aggregateStats():
         json.dump(lisToDict(topicDict),f)
     return topicDict
 
-# aggregateStats()
 
 #cluster per subject
 def clusterPerSub(arr):
@@ -148,14 +204,16 @@ def allCluster():
     topList = open('data/topics.csv','r').readlines()
     topicDict = []
     for a in topList:
-        spl = a.split(',')
-        topicDict.append(spl[1])
-
+        spl = a.split(',')[1]
+        topicDict.append(spl)
+    
     initDa = idsFromCluster()
-    initDa = [x[1::] for x in initDa]
+    # print(initDa)
+    initDa = [x[1] for x in initDa]
     clus = open('results/cluster.json','w')
     d = {}
     c = 0
+    # print(initDa)
     for a in initDa:
         retuCl = clusterPerSub(a)
         cl1,cl2,cl3=[],[],[]
@@ -177,7 +235,7 @@ def allCluster():
     clus.close()
 
 
-# allCluster()
+allCluster()
 
 def youtubRec():
     topList = open('data/topics.csv','r').readlines()
@@ -212,4 +270,5 @@ def youtubRec():
         
 
 # aggregateStats()
-allCluster()
+# allCluster()
+# getData()
