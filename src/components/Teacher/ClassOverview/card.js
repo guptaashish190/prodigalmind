@@ -1,5 +1,6 @@
 import React from 'react';
 import { Line } from 'react-chartjs-2';
+import $ from 'jquery';
 import { chart1Data } from './chartdata';
 
 class Card extends React.Component {
