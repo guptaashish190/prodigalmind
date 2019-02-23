@@ -149,6 +149,7 @@ def stats(classid):
     finalCSV.write(','.join([classid]+stats)+'\n')
     finalCSV.close()
     print('Stats done')
+    return json.dumps(finD)
 
 
 def lisToDict(arr):
@@ -175,9 +176,10 @@ def aggregateStats():
             topicDict[b].append(float(te[b]))
     with open('results/aggregateOverTime.json','w') as f:
         json.dump(lisToDict(topicDict),f)
-    return topicDict
+    return json.dumps(lisToDict(topicDict))
 
     print('Done Aggregate')
+
 
 #cluster per subject
 def clusterPerSub(arr):
@@ -237,6 +239,7 @@ def allCluster():
     json.dump(d,clus)
     clus.close()
     print('Done clustering')
+    return json.dumps(d)
 
 def youtubRec():
     topList = open('data/topics.csv','r').readlines()
@@ -269,6 +272,7 @@ def youtubRec():
         json.dump(d,f)
 
     print('Done Youtube')
+    return json.dumps(d)
         
 
 # getResultsData()
