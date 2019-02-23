@@ -7,7 +7,7 @@ class AddPaper extends React.Component {
     state = {
       numberques: 2,
       page: 'basic',
-      questions: ['Gravitation'],
+      questions: ['Gravitation', 'Gravitation'],
       class: 7,
       subject: 'Physics',
       studMarks: {},
@@ -15,7 +15,7 @@ class AddPaper extends React.Component {
     }
 
 
-    studentNames = ['Ashish', 'Lavan', 'Arpit', 'Pranjs', 'Smith', 'hdu', 'asda', 'asd', 'sdad']
+    studentNames = ['Ashish', 'Lavan', 'Arpit']
 
     setFieldState = (stud, i, e) => {
       const { studMarks } = this.state;
@@ -48,14 +48,18 @@ class AddPaper extends React.Component {
 
     onSubmit = () => {
       const studentMarks = Object.keys(this.state.studMarks).map(id => ({ roll: shortid.generate(), marks: this.state.studMarks[id] }));
+      const marksList = [];
+      for (let i = 0; i < this.state.numberques; i += 1) {
+        marksList.push(this.state.maxMarks);
+      }
       const data = {
         paper_subject: this.state.subject,
-        paper_topics: this.state.topics,
-        paper_marks: this.state.maxMarks,
+        paper_topics: this.state.questions,
+        paper_marks: marksList,
         q_num: this.state.numberques,
         student: studentMarks,
       };
-
+      console.log(data);
       Axios.post(`${server}/uploadPaper`, data).then((res) => {
         console.log(res);
       });
@@ -77,7 +81,7 @@ class AddPaper extends React.Component {
             <option> NLG</option>
             <option> Electrostats</option>
           </select>
-        </li>);
+                  </li>);
       }
       return list;
     }
@@ -103,6 +107,14 @@ class AddPaper extends React.Component {
 
     subjects = ['Physics', 'Chemistry', 'Biology'];
 
+    initQuestions = (e) => {
+      let questions = [];
+      for (let i = 0; i < e.target.value; i += 1) {
+        questions.push('Gravitation');
+      }
+      this.setState({ numberques: e.target.value, questions });
+      console.log(questions);
+    }
 
     basicDetailsPage = () => (
       <div className="addpaper-container">
@@ -138,7 +150,7 @@ class AddPaper extends React.Component {
                 </li>
                 <li>
                   <span className="number">No. of Ques</span>
-                  <span className="dropdown"><input value={this.state.numberques} onChange={e => this.setState({ numberques: e.target.value })} type="number" /></span>
+                  <span className="dropdown"><input value={this.state.numberques} onChange={e => this.initQuestions(e)} type="number" /></span>
                 </li>
 
               </ul>
