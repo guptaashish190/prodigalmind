@@ -7,25 +7,6 @@ import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
 import requests
 
-def getResultsData():
-    url = "http://192.168.43.158:8000/getResults"
-    response_json = requests.get(url).json()
-    # response_json = response_json.decode('utf-8')
-    dataform = str(response_json).strip("'<>() ").replace('\'', '\"')
-    response = json.loads(dataform)
-    f = open('data/results.json','w+')
-    json.dump(response,f)
-
-    url = "http://192.168.43.158:8000/getPaper"
-    response_json = requests.get(url).json()
-    # response_json = response_json.decode('utf-8')
-    dataform = str(response_json).strip("'<>() ").replace('\'', '\"')
-    response = json.loads(dataform)
-    f = open('data/paper.json','w+')
-    json.dump(response,f)
-
-
-
 def processInitialData():
     resu = open('data/results.json','r')
     pap = open('data/paper.json','r')
@@ -58,6 +39,25 @@ def processInitialData():
         resucs.write(s)
         s=''
     resu.close()
+
+def getResultsData():
+    url = "http://192.168.43.158:8000/getResults"
+    response_json = requests.get(url).json()
+    # response_json = response_json.decode('utf-8')
+    dataform = str(response_json).strip("'<>() ").replace('\'', '\"')
+    response = json.loads(dataform)
+    f = open('data/results.json','w+')
+    json.dump(response,f)
+
+    url = "http://192.168.43.158:8000/getPaper"
+    response_json = requests.get(url).json()
+    # response_json = response_json.decode('utf-8')
+    dataform = str(response_json).strip("'<>() ").replace('\'', '\"')
+    response = json.loads(dataform)
+    f = open('data/paper.json','w+')
+    json.dump(response,f)
+    processInitialData()
+
 # processInitialData()
 
 
@@ -72,7 +72,7 @@ def returnVideo(textToSearch):
         if(len(lisOfVideo)<3):
             lisOfVideo.append('https://www.youtube.com' + vid['href'])
     
-    return ['https://www.youtube.com' + vid['href'],random.shuffle(lisOfVideo)[0]]
+    return 'https://www.youtube.com' + vid['href']
 
 # marking per exam per student
 def markingPerExam(topicWiseMarks):
@@ -119,19 +119,20 @@ def stats(classid):
     # print(totalNo)
     # aggregateDict = {'physics':{},'history':{}}
     finLis = []
-    tot = [len(topList[0])]
+    tot = [len(topicDict[0])]
     #create initial dict
     for a in examRes:
         spl = a.split(',')
         # print([int(x.strip()) for x in spl[1::]])
         ids.append(spl[0])
         finLis.append([int(x.strip()) for x in spl[1::]])
-
+    # print(finLis)
     for a in finLis:
         tot= np.add(tot,a)
     # stats = [(x/(int(topicDict[1])*totalNo))*100 for x in tot]
     totMarks = [int(x[1].strip())*totalNo for x in topicDict]
     # print(totMarks)
+    # print(tot)
     # percentage marks per sections
     stats = np.divide(np.asarray(totMarks),tot)*100
     # print(stats)
@@ -147,6 +148,7 @@ def stats(classid):
 
     finalCSV.write(','.join([classid]+stats)+'\n')
     finalCSV.close()
+    print('Stats done')
 
 
 def lisToDict(arr):
@@ -160,7 +162,6 @@ def lisToDict(arr):
     return d
 
 def aggregateStats():
-    stats('1B9C100')
     examRes = open('results/aggregate.csv','r').readlines()
     topList = open('data/topics.csv','r').readlines()
     topicDict = []
@@ -176,9 +177,11 @@ def aggregateStats():
         json.dump(lisToDict(topicDict),f)
     return topicDict
 
+    print('Done Aggregate')
 
 #cluster per subject
 def clusterPerSub(arr):
+    # print(arr)
     kmeans = KMeans(n_clusters=3, random_state=0).fit(np.asarray(arr).reshape(-1,1))
     return kmeans.labels_
 
@@ -189,7 +192,7 @@ def idsFromCluster():
     for a in topList:
         spl = a.split(',')
         tempd = []
-        topicDict.append([spl[1]])
+        topicDict.append([spl[-1]])
     for a in examRes:
         regNo = a.split(',')[0]
         te = a.split(',')[1::]
@@ -209,7 +212,7 @@ def allCluster():
     
     initDa = idsFromCluster()
     # print(initDa)
-    initDa = [x[1] for x in initDa]
+    initDa = [x[1::] for x in initDa]
     clus = open('results/cluster.json','w')
     d = {}
     c = 0
@@ -233,9 +236,7 @@ def allCluster():
         c+=1
     json.dump(d,clus)
     clus.close()
-
-
-allCluster()
+    print('Done clustering')
 
 def youtubRec():
     topList = open('data/topics.csv','r').readlines()
@@ -247,28 +248,31 @@ def youtubRec():
         topicsList.append(spl[1])
     d = {}
     c = 0
+    # print(topicsList)
     with open('data/testexam.csv','r') as f:
         li = f.readlines()
         for reading in range(len(li)):
             temp = li[reading].split(',')
             il = temp[0]
-            for b in range(len(temp)):
+            for b in range(1,len(topicsList)):
                 try:
+                    # print(temp[b],topicDict[b],topicsList[b])
                     if(int(temp[b])<int(topicDict[b])):
-                        if(int(temp[b])<.75*int(topicDict[b]) and (int(temp[b])>5.*int(topicDict[b]))):
-                            d[il]=returnVideo(topicsList[b])[1]
+                        if(int(temp[b])<.75*int(topicDict[b])):
+                            d[il]=returnVideo(topicsList[b])
                         else:
-                            d[il] = returnVideo('Basic concepts of '+ topicsList[b])[1]
-                except:
-                    pass
+                            d[il] = returnVideo('Basic concepts of '+ topicsList[b])
+                except Exception as e: print(e)
+                    
             print('Done for {}'.format(il))
-    with open('results/youtube.json','a+') as f:
+    with open('results/youtube.json','w+') as f:
         json.dump(d,f)
 
-        
-    # print(topicDict)
+    print('Done Youtube')
         
 
-# aggregateStats()
-# allCluster()
-# getData()
+# getResultsData()
+stats('1B9C100')
+aggregateStats()
+allCluster()
+youtubRec()
