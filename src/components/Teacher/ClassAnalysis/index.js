@@ -109,7 +109,7 @@ class Analysis extends React.Component {
 
 
       return (
-        <div className="main-analysis">
+        <div className="student-section-container">
           <Sidebar />
           <div className="analysis-container">
             {this.state.addPaperPopup ? <AddPaper close={this.closeAddQuestionPaper} /> : '' }
@@ -121,7 +121,7 @@ class Analysis extends React.Component {
             </div>
             <div className="charts-container">
               <div className="chart main">
-                <Line data={chart1Data} width={600} height={400} options={options} />
+                <Line data={chart1Data} width={550} height={380} options={options} />
               </div>
               <div className="bottom">
                 <div className="chart small">
