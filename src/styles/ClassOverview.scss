@@ -4,7 +4,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    .overview-row{
+       .overview-row{
         display: flex;
     .overview-card{
         background-color: white;
@@ -58,6 +58,14 @@
                     font-weight: 300;
                 }
             }
+            .graph-overview{
+               display: flex;
+               flex-direction: column;
+               align-items: center;
+               span{
+                   margin-left: 18px;
+               }
+            }
         }
         .btn-container{
             width: 100%;
@@ -67,6 +75,9 @@
             background-color: white;
             border: none;
             color: #A7A7C5;
+        }
+        button:focus{
+            outline: none;
         }
     }
     }

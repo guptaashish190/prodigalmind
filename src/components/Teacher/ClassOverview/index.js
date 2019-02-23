@@ -1,6 +1,7 @@
 import React from 'react';
 import Card from './card';
 
+
 class Overview extends React.Component {
     arr = [{ class: '9C', subject: 'Maths', pop: 60 }, { class: '11C', subject: 'Physics', pop: 50 },
       { class: '7C', subject: 'Maths', pop: 55 }, { class: '12B', subject: 'Physics', pop: 65 },
