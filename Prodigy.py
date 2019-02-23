@@ -34,8 +34,9 @@ def processInitialData():
             s+=str(b['roll'])+','
             for c in b['marks']:
                 s+=str(c)+','
-        s=s[:-1]
-        s+='\n'
+            s+='\n'
+        # s=s[:-1]  
+        # s+='\n'
         resucs.write(s)
         s=''
     resu.close()
@@ -46,17 +47,16 @@ def getResultsData():
     # response_json = response_json.decode('utf-8')
     dataform = str(response_json).strip("'<>() ").replace('\'', '\"')
     response = json.loads(dataform)
-    f = open('data/results.json','w+')
+    f = open('data/testexam.json','w+')
     json.dump(response,f)
-
+    f.close()
     url = "http://prodigalmind.herokuapp.com/getPaper"
     response_json = requests.get(url).json()
     # response_json = response_json.decode('utf-8')
     dataform = str(response_json).strip("'<>() ").replace('\'', '\"')
     response = json.loads(dataform)
-    f = open('data/paper.json','w+')
-    json.dump(response,f)
-    processInitialData()
+    f2 = open('data/paper.json','w+')
+    json.dump(response,f2)
 
 # processInitialData()
 
@@ -272,7 +272,8 @@ def youtubRec():
         
 
 # getResultsData()
-stats('1B9C100')
-aggregateStats()
-allCluster()
-youtubRec()
+processInitialData()
+# stats('1B9C100')
+# aggregateStats()
+# allCluster()
+# youtubRec()
