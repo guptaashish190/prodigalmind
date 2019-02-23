@@ -41,7 +41,7 @@ def processInitialData():
     resu.close()
 
 def getResultsData():
-    url = "http://192.168.43.158:8000/getResults"
+    url = "http://prodigalmind.herokuapp.com/getResults"
     response_json = requests.get(url).json()
     # response_json = response_json.decode('utf-8')
     dataform = str(response_json).strip("'<>() ").replace('\'', '\"')
@@ -49,7 +49,7 @@ def getResultsData():
     f = open('data/results.json','w+')
     json.dump(response,f)
 
-    url = "http://192.168.43.158:8000/getPaper"
+    url = "http://prodigalmind.herokuapp.com/getPaper"
     response_json = requests.get(url).json()
     # response_json = response_json.decode('utf-8')
     dataform = str(response_json).strip("'<>() ").replace('\'', '\"')
