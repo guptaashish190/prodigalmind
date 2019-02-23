@@ -4,6 +4,7 @@ import Card from './Card';
 import { chart1Data, chart2Data, chart3Data } from './chartdata';
 import AddPaper from './AddPaper';
 import Studentcard from './Studentcard';
+import Sidebar from '../../Sidebar';
 
 class Analysis extends React.Component {
     state = {

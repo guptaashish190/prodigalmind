@@ -10,7 +10,7 @@ import Header from './Header';
 class App extends React.Component {
   render() {
     return (
-      <div>
+      <div className="main-body">
         <Header />
         <Router>
           <div className="body-container">
