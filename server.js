@@ -10,7 +10,7 @@ const app = express();
 
 app.use(bodyParser.urlencoded({ useNewUrlParser: true }));
 app.use(bodyParser.json());
-
+app.use(require('cors')());
 require('./app/routes')(app, {});
 
 mongoose.connect(config.url, function (err) {
