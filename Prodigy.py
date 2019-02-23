@@ -21,7 +21,7 @@ def processInitialData():
         for b in range(len(a['topics'])):
             s+=a['subject']+','
             s+=a['topics'][b]+','
-            s+=str(a['marks'][b])+','
+            s+=str(a['marks'    ][b])+','
             s = s[:-1]
             s+='\n'
             papcs.write(s)
@@ -272,7 +272,7 @@ def youtubRec():
         
 
 # getResultsData()
-processInitialData()
+# processInitialData()
 # stats('1B9C100')
 # aggregateStats()
 # allCluster()
