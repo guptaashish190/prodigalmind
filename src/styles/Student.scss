@@ -8,7 +8,7 @@
     height: 90%;
     position: fixed;
     display: grid;
-    grid-template-columns: 1fr 14fr;
+    grid-template-columns: 1fr 18fr;
     padding-bottom: 300px;
     background-color : #F4F6F9;
     border-bottom: 1px solid red;
@@ -20,6 +20,16 @@
         background: white;
         div{
             margin: 10px;
+        }
+        .cpanel{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 200px;
+            justify-content: space-evenly;
+            img:nth-child(3){
+                margin-top: 15px;
+            }
         }
     }
     .main{
