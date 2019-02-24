@@ -37,8 +37,6 @@ def processInitialData():
                 s += str(c)+','
             s=s[:-1]
             s+='\n'
-         
-        print("test=> ", s)
         if s:
             resucs.write(s)
         s=''

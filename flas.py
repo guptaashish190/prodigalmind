@@ -1,6 +1,8 @@
 from flask import Flask
-from Prodigy import stats, aggregateStats, allCluster, getResultsData, processInitialData
+from flask_cors import CORS
+from Prodigy import stats, aggregateStats, allCluster, getResultsData, processInitialData, youtubRec
 app = Flask(__name__)
+CORS(app)
 
 
 @app.route('/')
@@ -8,7 +10,7 @@ def hello():
     return "Hello World!"
 
 
-@app.route('/classPerfomance', methods=['GET'])
+@app.route('/classPerformance', methods=['GET'])
 def classPerfomance():
     getResultsData()
     processInitialData()
@@ -32,5 +34,13 @@ def allClust():
     # return "Hello World!"
 
 
+@app.route('/adaptiveLearning', methods=['GET'])
+def adaptiveLearning():
+    getResultsData()
+    processInitialData()
+    return youtubRec()
+    # return "Hello World!"
+
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0')
