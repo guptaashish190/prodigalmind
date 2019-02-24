@@ -1,5 +1,6 @@
 import React from 'react';
 import { Line } from 'react-chartjs-2';
+import Axios from 'axios';
 import Card from './Card';
 import { chart1Data, chart2Data, chart3Data } from './chartdata';
 import AddPaper from './AddPaper';
@@ -9,8 +10,16 @@ import Sidebar from '../../Student/Sidebar';
 class Analysis extends React.Component {
     state = {
       addPaperPopup: false,
+      classPerformance: false,
     }
 
+    componentWillMount() {
+      Axios.get('http://192.168.43.85:5000/classPerformance').then((res) => {
+        this.setState({
+          classPerformance: res.data,
+        });
+      });
+    }
 
     getTitles = () => this.title.map(elem => <li>{elem}</li>)
 
@@ -122,7 +131,7 @@ class Analysis extends React.Component {
             </div>
             <div className="charts-container">
               <div className="chart main">
-                <Line data={chart1Data} width={550} height={380} options={options} />
+                {this.state.classPerformance ? <Line data={canvas => chart1Data(canvas, this.state.classPerformance)} width={550} height={380} options={options} /> : '' }
               </div>
               <div className="bottom">
                 <div className="chart small">
