@@ -28,7 +28,7 @@ class AddPaper extends React.Component {
         student: studentMarks,
       };
       console.log(data);
-      Axios.post('http://192.168.43.158:8000/uploadPaper', data).then((res) => {
+      Axios.post(`${server}/uploadPaper`, data).then((res) => {
         console.log(res);
         this.props.close();
       }).catch((err) => {
