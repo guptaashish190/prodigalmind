@@ -1,5 +1,5 @@
 from flask import Flask
-from Prodigy import stats, aggregateStats, allCluster
+from Prodigy import stats, aggregateStats, allCluster, getResultsData, processInitialData
 app = Flask(__name__)
 
 
@@ -10,6 +10,24 @@ def hello():
 
 @app.route('/classPerfomance', methods=['GET'])
 def classPerfomance():
+    getResultsData()
+    processInitialData()
+    return stats("0")
+    # return "Hello World!"
+
+
+@app.route('/aggregateStats', methods=['GET'])
+def aggregateS():
+    getResultsData()
+    processInitialData()
+    return aggregateStats()
+    # return "Hello World!"
+
+
+@app.route('/allCluster', methods=['GET'])
+def allClust():
+    getResultsData()
+    processInitialData()
     return allCluster()
     # return "Hello World!"
 

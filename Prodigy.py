@@ -7,11 +7,12 @@ import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
 import requests
 
+
 def processInitialData():
-    resu = open('data/testexam.json','r')
-    pap = open('data/paper.json','r')
-    resucs = open('data/testexam.csv','w+')
-    papcs = open('data/topics.csv','w+')
+    resu = open('data/testexam.json', 'r')
+    pap = open('data/paper.json', 'r')
+    resucs = open('data/testexam.csv', 'w+')
+    papcs = open('data/topics.csv', 'w+')
     jr = json.load(resu)
     jp = json.load(pap)
     # print(jp['papers_array'])
@@ -19,25 +20,27 @@ def processInitialData():
     for a in jp['papers_array']:
         temp = []
         for b in range(len(a['topics'])):
-            s+=a['subject']+','
-            s+=a['topics'][b]+','
-            s+=str(a['marks'    ][b])+','
+            s += a['subject']+','
+            s += a['topics'][b]+','
+            s += str(a['marks'][b])+','
             s = s[:-1]
-            s+='\n'
+            s += '\n'
             papcs.write(s)
-            s=''
+            s = ''
 
     pap.close()
 
     for a in jr:
         for b in a:
-            s+=str(b['roll'])+','
+            s += str(b['roll'])+','
             for c in b['marks']:
-                s+=str(c)+','
+                s += str(c)+','
+            s=s[:-1]
             s+='\n'
-        # s=s[:-1]  
-        # s+='\n'
-        resucs.write(s)
+         
+        print("test=> ", s)
+        if s:
+            resucs.write(s)
         s=''
     resu.close()
 
@@ -84,13 +87,13 @@ def markingPerExam(topicWiseMarks):
             tot+=int(a.split(',')[-1])*topicWiseMarks[a]
     return tot
 
-#random marks
+# random marks
 def ran(ren):
     return str(random.randint(1,ren))
-#random studentid
+# random studentid
 def ranstudent():
     return '19BCE{}'.format(str(random.randint(1000,3000)))
-#random dataentry
+# random dataentry
 def dataentry():
     f = open('data/testexam.csv','w+')
     
@@ -101,7 +104,7 @@ def dataentry():
     f.close()
 # dataentry()
 
-#class stats for every class id
+# class stats for every class id
 def stats(classid):
     examRes = open('data/testexam.csv','r').readlines()
     topList = open('data/topics.csv','r').readlines()
@@ -110,17 +113,17 @@ def stats(classid):
     indivCSV = open('results/indivcsv.csv','a+')
     topicDict = []
     ids = []
-    #topic list
+    # topic list
     for a in topList:
         spl = a.split(',')
         topicDict.append([spl[1],spl[-1]])
-    #aggregate marks per topic
+    # aggregate marks per topic
     totalNo = len(examRes)
     # print(totalNo)
     # aggregateDict = {'physics':{},'history':{}}
     finLis = []
     tot = [len(topicDict[0])]
-    #create initial dict
+    # create initial dict
     for a in examRes:
         spl = a.split(',')
         # print([int(x.strip()) for x in spl[1::]])
@@ -181,7 +184,7 @@ def aggregateStats():
     print('Done Aggregate')
 
 
-#cluster per subject
+# cluster per subject
 def clusterPerSub(arr):
     # print(arr)
     kmeans = KMeans(n_clusters=3, random_state=0).fit(np.asarray(arr).reshape(-1,1))
@@ -204,7 +207,7 @@ def idsFromCluster():
     return topicDict
     
 
-#cluster for all subjects- increase collab
+# cluster for all subjects- increase collab
 def allCluster():
     topList = open('data/topics.csv','r').readlines()
     topicDict = []
