@@ -107,6 +107,43 @@ button:focus{
             }
         }
     }
+    .chatroom{
+     grid-column: 3/4;
+     position: relative;
+     top: -15px;
+     .chat-title{
+         padding: 0%;
+         margin-top: 0%;
+         padding-bottom: 20px;
+     }
+     .box{
+        margin-left: 0%;
+        margin-right: 20px;
+       height: 60%;
+       width: 90%;
+       background-color: white;
+       border-radius: 8px;
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+       justify-content: space-evenly;
+       box-shadow: 0px 0px 10px -4px #000000;
+       button{
+        background-image: linear-gradient(to right, #0074E4,#00CFEB);
+        color: white;
+        width: 140px;
+        height: 40px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+       }
+       span{
+           text-align: center;
+           padding: 10px;
+       }
+     }
+     
+    }
     .student-info{
         margin: auto;
         width: 100%;

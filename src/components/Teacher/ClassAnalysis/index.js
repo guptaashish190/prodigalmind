@@ -192,6 +192,16 @@ class Analysis extends React.Component {
               <Studentcard details={this.studentdata[2]} />
               <Studentcard details={this.studentdata[3]} />
             </div>
+            <div className="chatroom">
+              <h1 className="chat-title">Chartroom</h1>
+              <div className="box">
+                <img src="/images/745205.svg" alt="room" />
+                <button>Enter Chartroom</button>
+                <span>Give notification, messages to students
+                or just talk with them :)
+                </span>
+              </div>
+            </div>
           </div>
         </div>
       );
