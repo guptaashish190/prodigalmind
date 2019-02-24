@@ -4,6 +4,9 @@
     display: grid;
     grid-template-columns: 1fr 14fr;
 }
+button:focus{
+    outline: none;
+}
 .analysis-container{
     padding-bottom: 100px;
     display: grid;

@@ -2,6 +2,7 @@ import React from 'react';
 import { Line } from 'react-chartjs-2';
 import $ from 'jquery';
 
+
 class Card extends React.Component {
     chartdata = {
       labels: ['', '', '', ''],
