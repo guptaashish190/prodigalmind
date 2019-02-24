@@ -10,6 +10,20 @@
     overflow-y: scroll;
     grid-template-rows: 1fr 2fr;
     grid-template-columns: 2fr 1fr 1fr;
+    h1{
+        font-weight: 100;
+        padding-left: 30px;
+        margin-bottom: 0%;
+        color: #FF0044;
+        span{
+            font-weight: 600;
+        }
+    }
+    .student-title{
+        padding-left: 60px;
+        position: relative;
+        top: 20px;
+    }
     .cards-2{
         display: grid;
         grid-template-rows: 1fr 1fr;
@@ -29,6 +43,15 @@
             font-weight: 300;
             font-size: 1.2em;
             margin: 0%;
+            padding: 0%;
+            color: #000000;
+        }
+        img{
+            width: 60px;
+        }
+        span{
+            font-size: 0.9em;
+            text-align: center;
         }
         .quiz-card{
             box-shadow: 0px 0px 9px -4px #000000;
@@ -59,7 +82,7 @@
             cursor: pointer;
         }
         .btn-upload{
-            height: 40px;
+            height: 30px;
             width: 160px;
             margin: 0%;
         }

@@ -113,6 +113,7 @@ class Analysis extends React.Component {
           <Sidebar />
           <div className="analysis-container">
             {this.state.addPaperPopup ? <AddPaper close={this.closeAddQuestionPaper} /> : '' }
+            <h1>Good Morning,<span>Sam</span></h1>
             <div className="cards">
               <Card theme="theme1" title="Class & Section" content="2A" />
               <Card theme="theme2" title="Average Marks" content="40.4" />
@@ -174,9 +175,15 @@ class Analysis extends React.Component {
                 </ul>
               </div>
               <div className="detail-card">
+                <img src="/images/information.svg" alt="info" />
                 <button onClick={() => this.setState({ addPaperPopup: true })} className="btn-upload">Upload Student Marks</button>
+                <span>Upload Student Marks to get curated
+                insights and also help the student know there
+                 weakness and strengths
+                </span>
               </div>
             </div>
+            <h1 className="student-title">Class Students</h1>
             <div className="student-info">
               <Studentcard details={this.studentdata[0]} />
               <Studentcard details={this.studentdata[1]} />
