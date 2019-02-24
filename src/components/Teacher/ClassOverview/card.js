@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import { Line } from 'react-chartjs-2';
 import $ from 'jquery';
 
@@ -62,7 +63,7 @@ class Card extends React.Component {
         maintainAspectRatio: false,
       };
       return (
-        <div className="overview-card">
+        <div className="overview-card" onClick={() => this.props.history.push(`/teacher/class/${this.props.details.class}`)}>
           <div className="class-ball">
             <h1 className="class">{this.props.details.class}</h1>
           </div>
@@ -95,4 +96,4 @@ class Card extends React.Component {
     }
 }
 
-export default Card;
+export default withRouter(Card);

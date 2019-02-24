@@ -11,6 +11,7 @@ class Analysis extends React.Component {
     state = {
       addPaperPopup: false,
       classPerformance: false,
+      class: this.props.match.params.class,
     }
 
     componentWillMount() {
@@ -124,7 +125,7 @@ class Analysis extends React.Component {
             {this.state.addPaperPopup ? <AddPaper close={this.closeAddQuestionPaper} /> : '' }
             <h1>Good Morning,<span>Sam</span></h1>
             <div className="cards">
-              <Card theme="theme1" title="Class & Section" content="2A" />
+              <Card theme="theme1" title="Class & Section" content={this.state.class} />
               <Card theme="theme2" title="Average Marks" content="40.4" />
               <Card theme="theme3" title="Total Students" content="40" />
               <Card theme="theme4" title="Total Students" content="40" />
